@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.Test;
 
 import br.com.alura.tdd.modelo.Funcionario;
@@ -15,9 +13,8 @@ class BonusServiceTest {
 	static BonusService bonus = new BonusService();
 	
 	@Test
-	void bonusDeveRetornarZERO() {
-		BigDecimal big = bonus.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal("25000")));
-		assertEquals(BigDecimal.ZERO, big);
+	void bonusDeveRetornarException() {
+		assertThrows(IllegalArgumentException.class, () -> bonus.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal("25000"))));
 	}
 	
 	@Test

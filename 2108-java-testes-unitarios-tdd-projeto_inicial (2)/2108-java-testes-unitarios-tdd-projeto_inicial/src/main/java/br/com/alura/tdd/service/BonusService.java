@@ -10,7 +10,7 @@ public class BonusService {
 	public BigDecimal calcularBonus(Funcionario funcionario) {
 		BigDecimal valor = funcionario.getSalario().multiply(new BigDecimal("0.1"));
 		if (valor.compareTo(new BigDecimal("1000")) > 0) {
-			return valor = BigDecimal.ZERO;
+			throw new IllegalArgumentException("Funcionário com salário maior que 10 mil não recebe bonificação");
 		}
 		return valor.setScale(2, RoundingMode.HALF_UP);
 	}
